@@ -6,6 +6,7 @@ import { Login } from './src/pages/Login';
 import { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { globalStyles } from './src/global/styles';
+import { Home } from './src/pages/Home';
 
 const Stack = createStackNavigator()
 
@@ -30,6 +31,7 @@ export default function App() {
       <Stack.Navigator initialRouteName='Login'>
 
         <Stack.Screen name='Login' component={Login} options={{header: () => <></>}}/>
+        <Stack.Screen name='Home' component={Home} />
 
       </Stack.Navigator>
     </NavigationContainer>
