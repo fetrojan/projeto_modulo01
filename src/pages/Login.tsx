@@ -31,6 +31,7 @@ export function Login({navigation}) {
         axios.post(process.env.EXPO_PUBLIC_API_URL + '/login', {email, password})
         .then((response) => {
             AsyncStorage.setItem("@name", response.data.name)
+            AsyncStorage.setItem("@profile", response.data.profile)
 
             if(response.data.profile === 'admin') {
                 navigation.dispatch(
