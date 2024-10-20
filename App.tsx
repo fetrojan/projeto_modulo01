@@ -3,10 +3,12 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster'
 
 import { Login } from './src/pages/Login';
+import { Home } from './src/pages/Home';
+import Header from './src/components/Header';
+
 import { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { globalStyles } from './src/global/styles';
-import { Home } from './src/pages/Home';
 
 const Stack = createStackNavigator()
 
@@ -31,7 +33,7 @@ export default function App() {
       <Stack.Navigator initialRouteName='Login'>
 
         <Stack.Screen name='Login' component={Login} options={{header: () => <></>}}/>
-        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Home' component={Home} options={{header: () => <Header/>}}/>
 
       </Stack.Navigator>
     </NavigationContainer>
