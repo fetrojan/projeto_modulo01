@@ -4,7 +4,8 @@ import { StyleSheet } from "react-native";
 
 export const globalStyles = StyleSheet.create({
     safe: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#D3D3D3'
     },
     background: {
         flex: 1,
@@ -70,5 +71,27 @@ export const globalStyles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
     },
+    buttonContainer: {
+        alignItems: 'center'
+    },
+    button: {
+        backgroundColor: 'rgba(46, 139, 87, 0.75)',
+        width: 250,
+        padding: 20,
+        borderRadius: 20,
+        borderWidth: 3,
+        borderColor: '#1C4E80',
+        marginTop: 30,
+        alignItems: 'center'
+    },
+    buttonText: {
+        color: '#FFFFFF',
+        fontSize: 30,
+        fontWeight: 'bold'
+    },
+    buttonImage: {
+        width: 100,
+        height: 100
+    }
 
 })
