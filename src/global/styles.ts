@@ -92,6 +92,28 @@ export const globalStyles = StyleSheet.create({
     buttonImage: {
         width: 100,
         height: 100
+    },
+    card: {
+        backgroundColor: '#FFFFFF',
+        width: 150,
+        borderRadius: 20,
+        marginTop: 15,
+        padding: 10
+    },
+    cardSection: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 10,
+        alignItems: 'center'
+    },
+    cardImage: {
+        width: 50,
+        height: 50,
+    },
+    cardText: {
+        fontSize: 16,
+        alignSelf: 'center',
+        marginTop: 10
     }
 
 })
