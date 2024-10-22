@@ -13,7 +13,8 @@ export function Users({navigation}) {
     }
 
     function toggleSwitch(id) {
-        axios.patch(process.env.EXPO_PUBLIC_API_URL + `/users/${id}/toggle-status'`)
+        
+        axios.patch(process.env.EXPO_PUBLIC_API_URL + `/users/${id}/toggle-status`)
         .then(() => {
             getUsers()
         })
@@ -21,21 +22,6 @@ export function Users({navigation}) {
             console.log('Não foi possível alterar o status', error)
         })
     }
-
-    const arrayTeste = [
-        {nome: 'Felipe', profile: 'motorista', id: 1, status: true},
-        {nome: 'Farmacia', profile: 'filial', id: 2, status: false},
-        {nome: 'Farmacia', profile: 'filial', id: 3, status: true},
-        {nome: 'Farmacia', profile: 'filial', id: 4, status: true},
-        {nome: 'Farmacia', profile: 'filial', id: 5, status: true},
-        {nome: 'Farmacia', profile: 'filial', id: 6, status: false},
-        {nome: 'Farmacia', profile: 'filial', id: 7, status: false},
-        {nome: 'Farmacia', profile: 'filial', id: 8, status: false},
-        {nome: 'Felipe', profile: 'motorista', id: 9, status: false},
-        {nome: 'Felipe', profile: 'motorista', id: 10, status: true},
-        {nome: 'Felipe', profile: 'motorista', id: 11, status: true},
-        {nome: 'Felipe', profile: 'motorista', id: 12, status: true},
-    ]
 
     function getUsers() {
         axios.get(process.env.EXPO_PUBLIC_API_URL + '/users')
@@ -72,9 +58,10 @@ export function Users({navigation}) {
                         <Image source={imageSource} style={globalStyles.cardImage}/>
                         <Switch
                         trackColor={{ false: '#D3D3D3', true: '#2E8B57' }} 
+                        thumbColor={item.status ? '#f4f3f4' : '#f4f3f4'}
                         ios_backgroundColor="#D3D3D3"    
                         value={item.status}
-                        onValueChange={(value) => toggleSwitch(item.id)}
+                        onValueChange={() => toggleSwitch(item.id)}
                         />
                     </View>
                     <Text style={globalStyles.cardText}>{item.profile === 'motorista' ? 'Motorista' : 'Filial'}</Text>
@@ -91,7 +78,7 @@ export function Users({navigation}) {
             </TouchableOpacity>
 
             <FlatList 
-            data={arrayTeste}
+            data={users}
             renderItem={renderUserCard}
             keyExtractor={(item) => item.id.toString()} 
             numColumns={2}
