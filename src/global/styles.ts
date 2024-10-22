@@ -57,6 +57,12 @@ export const globalStyles = StyleSheet.create({
         marginVertical: 15,
         marginHorizontal: 20
     },
+    labelText: {
+        marginHorizontal: 20,
+        fontSize: 18,
+        color: '#1C4E80',
+        fontWeight: '600'
+    },
     loginButton: {
         backgroundColor: '#229c8c',
         borderRadius: 15,
@@ -66,7 +72,7 @@ export const globalStyles = StyleSheet.create({
         width: 200,
         marginTop: 20
     },
-      loginButtonText: {
+    loginButtonText: {
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 16,
@@ -114,6 +120,33 @@ export const globalStyles = StyleSheet.create({
         fontSize: 16,
         alignSelf: 'center',
         marginTop: 10
+    },
+    option: {
+        backgroundColor: '#FFFFFF',
+        width: 100,
+        padding: 15,
+        borderRadius: 20,
+        borderWidth: 3,
+        borderColor: '#1C4E80',
+        marginTop: 10,
+        alignItems: 'center',
+        marginBottom: 15
+    },
+    optionSelected: {
+        backgroundColor: '#229c8c',
+        width: 100,
+        padding: 15,
+        borderRadius: 20,
+        borderWidth: 3,
+        borderColor: '#FFFFFF',
+        marginTop: 10,
+        alignItems: 'center',
+        marginBottom: 15
+    },
+    subtitle: {
+        fontSize: 24,
+        color: '#1C4E80',
+        fontWeight: 'bold'
     }
 
 })
