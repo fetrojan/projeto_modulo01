@@ -1,29 +1,40 @@
-import { Text, FlatList, SafeAreaView, View, Switch, Image } from "react-native";
+import { Text, FlatList, SafeAreaView, View, Switch, Image, TouchableOpacity } from "react-native";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { globalStyles } from "../global/styles";
 
 
-export function Users() {
+export function Users({navigation}) {
 
     const [users, setUsers] = useState([])
-    const [isEnabled, setIsEnabled] = useState(false);
 
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState)
+    function navigateToRegister() {
+        navigation.navigate('UserRegistration')
+    }
+
+    function toggleSwitch(id) {
+        axios.patch(process.env.EXPO_PUBLIC_API_URL + `/users/${id}/toggle-status'`)
+        .then(() => {
+            getUsers()
+        })
+        .catch((error) => {
+            console.log('Não foi possível alterar o status', error)
+        })
+    }
 
     const arrayTeste = [
-        {nome: 'Felipe', profile: 'motorista', id: 1},
-        {nome: 'Farmacia', profile: 'filial', id: 2},
-        {nome: 'Farmacia', profile: 'filial', id: 3},
-        {nome: 'Farmacia', profile: 'filial', id: 4},
-        {nome: 'Farmacia', profile: 'filial', id: 5},
-        {nome: 'Farmacia', profile: 'filial', id: 6},
-        {nome: 'Farmacia', profile: 'filial', id: 7},
-        {nome: 'Farmacia', profile: 'filial', id: 8},
-        {nome: 'Felipe', profile: 'motorista', id: 9},
-        {nome: 'Felipe', profile: 'motorista', id: 10},
-        {nome: 'Felipe', profile: 'motorista', id: 11},
-        {nome: 'Felipe', profile: 'motorista', id: 12},
+        {nome: 'Felipe', profile: 'motorista', id: 1, status: true},
+        {nome: 'Farmacia', profile: 'filial', id: 2, status: false},
+        {nome: 'Farmacia', profile: 'filial', id: 3, status: true},
+        {nome: 'Farmacia', profile: 'filial', id: 4, status: true},
+        {nome: 'Farmacia', profile: 'filial', id: 5, status: true},
+        {nome: 'Farmacia', profile: 'filial', id: 6, status: false},
+        {nome: 'Farmacia', profile: 'filial', id: 7, status: false},
+        {nome: 'Farmacia', profile: 'filial', id: 8, status: false},
+        {nome: 'Felipe', profile: 'motorista', id: 9, status: false},
+        {nome: 'Felipe', profile: 'motorista', id: 10, status: true},
+        {nome: 'Felipe', profile: 'motorista', id: 11, status: true},
+        {nome: 'Felipe', profile: 'motorista', id: 12, status: true},
     ]
 
     function getUsers() {
@@ -53,15 +64,17 @@ export function Users() {
             imageSource = require('../../assets/filial.png')
         }
 
+        const backgroundColor = item.status ? '#d1f5d3' : '#FFFFFF';
+
         return (
-            <View style={globalStyles.card}>
+            <View style={[globalStyles.card, {backgroundColor}]}>
                     <View style={globalStyles.cardSection}>
                         <Image source={imageSource} style={globalStyles.cardImage}/>
                         <Switch
                         trackColor={{ false: '#D3D3D3', true: '#2E8B57' }} 
                         ios_backgroundColor="#D3D3D3"    
-                        value={isEnabled}
-                        onValueChange={toggleSwitch}
+                        value={item.status}
+                        onValueChange={(value) => toggleSwitch(item.id)}
                         />
                     </View>
                     <Text style={globalStyles.cardText}>{item.profile === 'motorista' ? 'Motorista' : 'Filial'}</Text>
@@ -72,9 +85,11 @@ export function Users() {
     return(
 
         <SafeAreaView style={globalStyles.safe}>
-
-            <Text> Pagina de Usuarios</Text>
     
+            <TouchableOpacity onPress={navigateToRegister} style={[globalStyles.button, {paddingVertical:10, alignSelf:'center'}]}>
+                <Text style={[globalStyles.buttonText, {fontSize: 15}]}>Novo Usuário</Text>
+            </TouchableOpacity>
+
             <FlatList 
             data={arrayTeste}
             renderItem={renderUserCard}
