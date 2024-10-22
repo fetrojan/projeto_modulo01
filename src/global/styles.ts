@@ -119,7 +119,8 @@ export const globalStyles = StyleSheet.create({
     cardText: {
         fontSize: 16,
         alignSelf: 'center',
-        marginTop: 10
+        marginTop: 5,
+        fontWeight: '500'
     },
     option: {
         backgroundColor: '#FFFFFF',

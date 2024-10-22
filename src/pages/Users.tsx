@@ -65,6 +65,7 @@ export function Users({navigation}) {
                         />
                     </View>
                     <Text style={globalStyles.cardText}>{item.profile === 'motorista' ? 'Motorista' : 'Filial'}</Text>
+                    <Text style={globalStyles.cardText}>{item.name}</Text>
             </View>
         )
     }
