@@ -10,6 +10,7 @@ import { Users } from './src/pages/Users';
 
 import { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
+import { UserRegistration } from './src/pages/UserRegistration';
 
 const Stack = createStackNavigator()
 
@@ -35,8 +36,9 @@ export default function App() {
 
         <Stack.Screen name='Login' component={Login} options={{header: () => <></>}}/>
         <Stack.Screen name='Home' component={Home}  options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
-        <Stack.Screen name='Inventory' component={Inventory}  options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
-        <Stack.Screen name='Users' component={Users}/> 
+        <Stack.Screen name='Inventory' component={Inventory} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
+        <Stack.Screen name='Users' component={Users} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
+        <Stack.Screen name='UserRegistration' component={UserRegistration}/> 
 
       </Stack.Navigator>
     </NavigationContainer>
