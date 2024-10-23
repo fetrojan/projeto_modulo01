@@ -122,6 +122,13 @@ export const globalStyles = StyleSheet.create({
         marginTop: 5,
         fontWeight: '500'
     },
+    cardTitle: {
+        fontSize: 22,
+        alignSelf: 'center',
+        marginTop: 5,
+        fontWeight: '600',
+        color:'#FFFFFF'
+    },
     option: {
         backgroundColor: '#FFFFFF',
         width: 100,
@@ -148,6 +155,21 @@ export const globalStyles = StyleSheet.create({
         fontSize: 24,
         color: '#1C4E80',
         fontWeight: 'bold'
+    },
+    productCard: {
+        backgroundColor: '#229c8c',
+        width: '90%',
+        alignSelf: 'center',
+        borderRadius: 20,
+        marginTop: 15,
+        padding: 20,
+    },
+    productImage: {
+        width: 150,
+        height: 150,
+        borderWidth: 1,
+        borderColor: '#1C4E80',
+        alignSelf: 'center'
     }
 
 })
