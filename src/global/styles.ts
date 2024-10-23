@@ -170,6 +170,11 @@ export const globalStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#1C4E80',
         alignSelf: 'center'
+    },
+    cardDescription: {
+        fontWeight: '300',
+        color: '#DDDD',
+        fontStyle: 'italic'
     }
 
 })
