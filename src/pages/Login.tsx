@@ -27,7 +27,7 @@ export function Login({navigation}) {
                     routes: [{name:'BranchMovement'}]
                     })
             )
-        } else {
+        } else if (profileLocalStorage === 'motorista') {
             navigation.dispatch(
                 CommonActions.reset({
                     index: 0,
