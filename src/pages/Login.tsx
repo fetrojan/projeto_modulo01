@@ -11,13 +11,27 @@ export function Login({navigation}) {
     const [password, setPassword] = useState('')
 
     async function redirectToHome() {
-        const nomeLocalStorage = await AsyncStorage.getItem('@name')
+        const profileLocalStorage = await AsyncStorage.getItem('@profile')
 
-        if(nomeLocalStorage) {
+        if(profileLocalStorage === 'admin') {
             navigation.dispatch(
                 CommonActions.reset({
                     index: 0,
                     routes: [{name:'Home'}]
+                    })
+            )
+        } else if (profileLocalStorage === 'filial') {
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{name:'BranchMovement'}]
+                    })
+            )
+        } else {
+            navigation.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{name:'CourierMovement'}]
                     })
             )
         }
@@ -44,14 +58,14 @@ export function Login({navigation}) {
                 navigation.dispatch(
                     CommonActions.reset({
                         index: 0,
-                        routes: [{ name: 'Home'}]
+                        routes: [{ name: 'BranchMovement'}]
                     })
                 )
             } else {
                 navigation.dispatch(
                     CommonActions.reset({
                         index: 0,
-                        routes: [{ name: 'Home'}]
+                        routes: [{ name: 'CourierMovement'}]
                     })
                 )    
             }
