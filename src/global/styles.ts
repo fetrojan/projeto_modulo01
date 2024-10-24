@@ -175,6 +175,40 @@ export const globalStyles = StyleSheet.create({
         fontWeight: '300',
         color: '#DDDD',
         fontStyle: 'italic'
-    }
+    },
+    pickerContainer: {
+        overflow: 'hidden',
+        borderWidth: 1,
+        borderColor: '#1C4E80',
+        backgroundColor: '#FFFFFF',
+        height: 50,
+        marginHorizontal: 10
+    },
+    pickerLabel: {
+        marginHorizontal: 10,
+        marginTop: 15,
+        fontSize: 18,
+        color: '#1C4E80',
+        fontWeight: '600'
+    },
+    picker: {
+        height: 50,
+        width: '100%',
+        justifyContent: 'center'
+    },
+    pickerItem: {
+        fontSize: 16,
+        color: '#1C4E80',
+    },
+    textInput: {
+        height: 50,
+        fontSize: 18,
+        backgroundColor: '#FFFFFF',
+        borderColor: '#1C4E80',
+        borderWidth: 1,
+        paddingHorizontal: 10,
+        marginHorizontal: 10,
+        verticalAlign: 'middle' 
+    },
 
 })

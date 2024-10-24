@@ -3,7 +3,7 @@ import { Alert, FlatList, SafeAreaView, Text, TouchableOpacity, View } from "rea
 import axios from "axios";
 import { globalStyles } from "../global/styles";
 
-export function BranchMovements() {
+export function BranchMovements({navigation}) {
 
     const [movements, setMovements] = useState([])
     
@@ -18,40 +18,43 @@ export function BranchMovements() {
         })
     }, [])
 
+    function navigateToNewMovement() {
+        navigation.navigate('NewMovement')
+    }
+
     function renderMovements({item}) {
         return (
             <View style={[globalStyles.productCard, {backgroundColor: '#4682B4', borderWidth:2}]}>
                 <View style={{flexDirection:'row', justifyContent:'flex-end'}}>
-                    <Text style={[globalStyles.cardText, {fontWeight:'600', color:'#FFFFFF'}]}>#1</Text>
+                    <Text style={[globalStyles.cardText, {fontWeight:'600', color:'#FFFFFF'}]}>#{item.id}</Text>
                 </View>
-                <Text style={[globalStyles.cardText, {alignSelf:'flex-start', fontWeight:'600', marginBottom:20}]}>Origem: <Text style={globalStyles.cardDescription}>{item.origem}</Text></Text>
-                <Text style={[globalStyles.cardText, {alignSelf:'flex-start', fontWeight:'600', marginBottom:20}]}>Destino: <Text style={globalStyles.cardDescription}>{item.destino}</Text></Text>
-                <Text style={[globalStyles.cardText, {alignSelf:'flex-start', fontWeight:'600', marginBottom:20}]}>Produto: <Text style={globalStyles.cardDescription}>{item.produto} - {item.quantidade} unid.</Text></Text>
-                <Text style={[globalStyles.cardText, {alignSelf:'flex-start', fontWeight:'600'}]}>Status: <Text style={globalStyles.cardDescription}>{item.status}</Text></Text>
+                <Text style={[globalStyles.cardText, {alignSelf:'flex-start', fontWeight:'600', marginBottom:20}]}>Origem: <Text style={globalStyles.cardDescription}>{item.origem.nome}</Text></Text>
+                <Text style={[globalStyles.cardText, {alignSelf:'flex-start', fontWeight:'600', marginBottom:20}]}>Destino: <Text style={globalStyles.cardDescription}>{item.destino.nome}</Text></Text>
+                <Text style={[globalStyles.cardText, {alignSelf:'flex-start', fontWeight:'600', marginBottom:20}]}>Produto: <Text style={globalStyles.cardDescription}>{item.produto.nome} - {item.quantidade} unid.</Text></Text>
+                <Text style={[globalStyles.cardText, {alignSelf:'flex-start', fontWeight:'600'}]}>Status: </Text>
+                {item.historico.map((historicoItem) => (
+                    <View key={historicoItem.id} style={{ marginLeft: 10 }}>
+                        <Text style={globalStyles.cardDescription}>
+                            {historicoItem.descricao} - {historicoItem.data}
+                        </Text>
+                    </View>
+                ))}
             </View>
         )
     }
-
-    const arrayTeste = [
-        {origem: 'Farmacia', destino: 'Farmacia Y', produto: 'remedio XYZ', quantidade: 10, status: 'aguardando coleta'},
-        {origem: 'Farmacia', destino: 'Farmacia Y', produto: 'remedio XYZ', quantidade: 10, status: 'aguardando coleta'},
-        {origem: 'Farmacia', destino: 'Farmacia Y', produto: 'remedio XYZ', quantidade: 10, status: 'aguardando coleta'},
-        {origem: 'Farmacia', destino: 'Farmacia Y', produto: 'remedio XYZ', quantidade: 10, status: 'aguardando coleta'},
-        {origem: 'Farmacia', destino: 'Farmacia Y', produto: 'remedio XYZ', quantidade: 10, status: 'aguardando coleta'},
-        {origem: 'Farmacia', destino: 'Farmacia Y', produto: 'remedio XYZ', quantidade: 10, status: 'aguardando coleta'},
-    ]
 
     return (
 
         <SafeAreaView style={globalStyles.safe}>
 
-            <TouchableOpacity style={[globalStyles.button, {paddingVertical:10, alignSelf:'center'}]}>
+            <TouchableOpacity onPress={navigateToNewMovement} style={[globalStyles.button, {paddingVertical:10, alignSelf:'center'}]}>
                 <Text style={[globalStyles.buttonText, {fontSize: 15}]}>Adicionar Movimentação</Text>
             </TouchableOpacity>
 
             <FlatList
-            data={arrayTeste}
-            renderItem={renderMovements}/>
+            data={movements}
+            renderItem={renderMovements}
+            />
 
         </SafeAreaView>
 
