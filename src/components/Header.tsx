@@ -73,7 +73,7 @@ export default function Header({navigation}) {
 const styles = StyleSheet.create({
     rowContainer: {
         flexDirection: 'row',
-        backgroundColor: '#2E8B57',
+        backgroundColor: '#229c8c',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
