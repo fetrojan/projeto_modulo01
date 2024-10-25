@@ -210,5 +210,46 @@ export const globalStyles = StyleSheet.create({
         marginHorizontal: 10,
         verticalAlign: 'middle' 
     },
+    movementCard: {
+        width: '95%',
+        height: 500,
+        backgroundColor: '#FFFFFF',
+        borderWidth: 2,
+        borderColor: '#1C4E80',
+        padding: 15
+    },
+    movementSection: {
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    movementImage: {
+        width: 100,
+        height: 100,
+        borderWidth: 1,
+        borderColor: '#1C4E80',
+    },
+    movementTitle: {
+        fontSize: 16,
+        fontWeight: '600',
+        color:'#1C4E80',
+        marginTop:20,
+    },
+    movementQuantity: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 20
+    },
+    movementButton: {
+        backgroundColor: '#1C4E80',
+        borderRadius: 5,
+        padding: 10,
+        alignItems: 'center',
+        width: 'auto',
+    },
+    movementButtonText: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        fontSize: 16,
+    }
 
 })
