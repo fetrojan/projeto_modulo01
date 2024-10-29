@@ -39,14 +39,12 @@ export function CourierMovement() {
             const imageInCamera = await ImagePicker.launchCameraAsync();
     
             if (!imageInCamera.canceled && imageInCamera.assets) {
-                
                 const asset = imageInCamera.assets[0];
                 setImage(asset.uri);
-                setType(asset.mimeType as string);
-                setFileName(asset.fileName as string);
-    
+                setType(asset.mimeType || 'image/jpeg');
+                setFileName(asset.fileName || 'image.jpg');
                 
-                await uploadImage(asset.uri, asset.fileName, asset.mimeType, itemId);
+                await uploadImage(asset.uri, asset.fileName || 'image.jpg', asset.mimeType || 'image/jpeg', itemId);
             } else {
                 console.log("Câmera foi cancelada ou não retornou uma imagem.");
             }
@@ -57,15 +55,15 @@ export function CourierMovement() {
     
     const uploadImage = async (uri, fileName, type, id) => {
         const dados = new FormData();
-        dados.append('name', name);
-        dados.append('image', {
+        dados.append('motorista', name);
+        dados.append('file', {
             uri,
             name: fileName,
             type: type,
         });
     
         try {
-            const response = await axios.post(process.env.EXPO_PUBLIC_API_URL + `/movements/${id}/start`, dados, {
+            const response = await axios.put(process.env.EXPO_PUBLIC_API_URL + `/movements/${id}/start`, dados, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
