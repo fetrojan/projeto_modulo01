@@ -1,5 +1,26 @@
-import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import { StyleSheet } from "react-native";
+
+const cardShadow = {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 10,
+};
+
+
+const colors = {
+    primary: '#1C4E80',
+    accent: '#229c8c',
+    white: '#FFFFFF',
+    shadow: '#000',
+};
+
+const fontSizes = {
+    small: 16,
+    medium: 18,
+};
+
 
 
 export const globalStyles = StyleSheet.create({
@@ -14,7 +35,7 @@ export const globalStyles = StyleSheet.create({
     },
     loginContainer: {
         backgroundColor: 'rgba(255, 255, 255, 0.75)',
-        shadowColor: '#000',
+        shadowColor: colors.shadow,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 4,
@@ -35,13 +56,13 @@ export const globalStyles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 32,
         fontWeight: 'bold',
-        color: '#229c8c',
+        color: colors.accent,
         marginTop: 0
     },
     logoDestaque: {
         fontFamily: 'Lobster_400Regular',
         fontSize: 38,
-        color: '#1C4E80'
+        color: colors.primary
     },
     logoLogin: {
         width: 150,
@@ -50,8 +71,8 @@ export const globalStyles = StyleSheet.create({
     },
     input: {
         borderWidth: 1,
-        borderColor: '#1C4E80',
-        backgroundColor: '#FFFFFF',
+        borderColor: colors.primary,
+        backgroundColor: colors.white,
         padding: 15,
         borderRadius: 10,
         marginVertical: 15,
@@ -59,12 +80,12 @@ export const globalStyles = StyleSheet.create({
     },
     labelText: {
         marginHorizontal: 20,
-        fontSize: 18,
-        color: '#1C4E80',
+        fontSize: fontSizes.medium,
+        color: colors.primary,
         fontWeight: '600'
     },
     loginButton: {
-        backgroundColor: '#229c8c',
+        backgroundColor: colors.accent,
         borderRadius: 15,
         padding: 15,
         alignItems: 'center',
@@ -73,9 +94,9 @@ export const globalStyles = StyleSheet.create({
         marginTop: 20
     },
     loginButtonText: {
-        color: '#fff',
+        color: colors.white,
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: fontSizes.small,
     },
     buttonContainer: {
         alignItems: 'center'
@@ -86,12 +107,12 @@ export const globalStyles = StyleSheet.create({
         padding: 20,
         borderRadius: 20,
         borderWidth: 3,
-        borderColor: '#1C4E80',
+        borderColor: colors.primary,
         marginTop: 30,
         alignItems: 'center'
     },
     buttonText: {
-        color: '#FFFFFF',
+        color: colors.white,
         fontSize: 30,
         fontWeight: 'bold'
     },
@@ -100,7 +121,7 @@ export const globalStyles = StyleSheet.create({
         height: 100
     },
     card: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: colors.white,
         width: 150,
         borderRadius: 20,
         marginTop: 15,
@@ -117,7 +138,7 @@ export const globalStyles = StyleSheet.create({
         height: 50,
     },
     cardText: {
-        fontSize: 16,
+        fontSize: fontSizes.small,
         alignSelf: 'center',
         marginTop: 5,
         fontWeight: '500'
@@ -127,37 +148,37 @@ export const globalStyles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 5,
         fontWeight: '600',
-        color:'#FFFFFF'
+        color:colors.white
     },
     option: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: colors.white,
         width: 100,
         padding: 15,
         borderRadius: 20,
         borderWidth: 3,
-        borderColor: '#1C4E80',
+        borderColor: colors.primary,
         marginTop: 10,
         alignItems: 'center',
         marginBottom: 15
     },
     optionSelected: {
-        backgroundColor: '#229c8c',
+        backgroundColor: colors.accent,
         width: 100,
         padding: 15,
         borderRadius: 20,
         borderWidth: 3,
-        borderColor: '#FFFFFF',
+        borderColor: colors.white,
         marginTop: 10,
         alignItems: 'center',
         marginBottom: 15
     },
     subtitle: {
         fontSize: 24,
-        color: '#1C4E80',
+        color: colors.primary,
         fontWeight: 'bold'
     },
     productCard: {
-        backgroundColor: '#229c8c',
+        backgroundColor: colors.accent,
         width: '90%',
         alignSelf: 'center',
         borderRadius: 20,
@@ -168,7 +189,7 @@ export const globalStyles = StyleSheet.create({
         width: 150,
         height: 150,
         borderWidth: 1,
-        borderColor: '#1C4E80',
+        borderColor: colors.primary,
         alignSelf: 'center'
     },
     cardDescription: {
@@ -179,16 +200,16 @@ export const globalStyles = StyleSheet.create({
     pickerContainer: {
         overflow: 'hidden',
         borderWidth: 1,
-        borderColor: '#1C4E80',
-        backgroundColor: '#FFFFFF',
+        borderColor: colors.primary,
+        backgroundColor: colors.white,
         height: 50,
         marginHorizontal: 10
     },
     pickerLabel: {
         marginHorizontal: 10,
         marginTop: 15,
-        fontSize: 18,
-        color: '#1C4E80',
+        fontSize: fontSizes.medium,
+        color: colors.primary,
         fontWeight: '600'
     },
     picker: {
@@ -197,26 +218,42 @@ export const globalStyles = StyleSheet.create({
         justifyContent: 'center'
     },
     pickerItem: {
-        fontSize: 16,
-        color: '#1C4E80',
+        fontSize: fontSizes.small,
+        color: colors.primary,
     },
     textInput: {
         height: 50,
-        fontSize: 18,
-        backgroundColor: '#FFFFFF',
-        borderColor: '#1C4E80',
+        fontSize: fontSizes.medium,
+        backgroundColor: colors.white,
+        borderColor: colors.primary,
         borderWidth: 1,
         paddingHorizontal: 10,
         marginHorizontal: 10,
         verticalAlign: 'middle' 
     },
     movementCard: {
-        width: '95%',
-        height: 500,
-        backgroundColor: '#FFFFFF',
-        borderWidth: 2,
-        borderColor: '#1C4E80',
-        padding: 15
+        ...cardShadow,
+        borderRadius: 20,
+        backgroundColor: colors.white,
+        padding: 30,
+        marginHorizontal: 15,
+        height: '85%'
+    },
+    inTransitCard: {
+        ...cardShadow,
+        borderRadius: 20,
+        backgroundColor: '#D3D3D3',
+        padding: 30,
+        marginHorizontal: 15,
+        height: '85%'
+    },
+    collectedCard: {
+        ...cardShadow,
+        borderRadius: 20,
+        backgroundColor: colors.accent,
+        padding: 30,
+        marginHorizontal: 15,
+        height: '85%'
     },
     movementSection: {
         flexDirection: 'row',
@@ -226,30 +263,30 @@ export const globalStyles = StyleSheet.create({
         width: 100,
         height: 100,
         borderWidth: 1,
-        borderColor: '#1C4E80',
+        borderColor: colors.primary,
     },
     movementTitle: {
-        fontSize: 16,
+        fontSize: fontSizes.small,
         fontWeight: '600',
-        color:'#1C4E80',
+        color:colors.primary,
         marginTop:20,
     },
     movementQuantity: {
-        fontSize: 16,
+        fontSize: fontSizes.small,
         fontWeight: 'bold',
         marginTop: 20
     },
     movementButton: {
-        backgroundColor: '#1C4E80',
+        backgroundColor: colors.primary,
         borderRadius: 5,
         padding: 10,
         alignItems: 'center',
         width: 'auto',
     },
     movementButtonText: {
-        color: '#FFFFFF',
+        color: colors.white,
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: fontSizes.small,
     }
 
 })
