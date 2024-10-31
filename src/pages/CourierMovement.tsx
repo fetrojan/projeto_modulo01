@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { ProgressBar } from "../components/ProgressBar";
 
 
-export function CourierMovement() {
+export function CourierMovement({navigation}) {
     
     const [movements, setMovements] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -17,6 +17,10 @@ export function CourierMovement() {
     const [image, setImage] = useState('')
     const [type, setType] = useState('')
     const [fileName, setFileName] = useState('')
+
+    function navigateToMap(movementId) {
+        navigation.navigate('Map', {movementId})
+    }
 
     useEffect(() => {
         async function fetchName() {
@@ -83,7 +87,7 @@ export function CourierMovement() {
         try {
             const response = await axios.get(process.env.EXPO_PUBLIC_API_URL + '/movements');
             setMovements(response.data);
-            setReloadCards(response.data)
+            
         } catch (error) {
             console.log('Não foi possível carregar as movimentações', error);
         }
@@ -94,7 +98,7 @@ export function CourierMovement() {
     }, []);
 
 
-    function renderCard(item) {
+    function renderCard(item, index) {
         if (!item || !item.produto) {
             return <Text>Loading...</Text>;
         }
@@ -104,7 +108,7 @@ export function CourierMovement() {
         const descriptionTextStyle = item.status === 'em transito' ? [globalStyles.cardDescription, {color:'#4682B4'}] : item.status === 'Coleta finalizada' ? [globalStyles.cardDescription, {color:'#FFFFFF'}] : [globalStyles.cardDescription, {color:'#4682B4'}]
 
         return (
-            <View key={item.id} style={cardStyle}>
+            <View key={`${item.id}-${index}`} style={cardStyle}>
                 <Text style={{ alignSelf: 'flex-end', marginRight: 10}}>#{item.id}</Text>
                 <View style={globalStyles.movementSection}>
                     <Image source={{uri: item.produto.imagem}} style={globalStyles.movementImage}/>
@@ -148,7 +152,7 @@ export function CourierMovement() {
                         <Text style={globalStyles.movementButtonText}>Finalizar entrega</Text>
                     </TouchableOpacity>
                     )}
-                    <TouchableOpacity style={globalStyles.movementButton}>
+                    <TouchableOpacity style={globalStyles.movementButton} onPress={() => navigateToMap(item.id)}>
                         <Text style={globalStyles.movementButtonText}>Mapa</Text>
                     </TouchableOpacity>
                 </View>
