@@ -15,7 +15,8 @@ export function Users({navigation}) {
     function toggleSwitch(id) {
         
         axios.patch(process.env.EXPO_PUBLIC_API_URL + `/users/${id}/toggle-status`)
-        .then(() => {
+        .then((response) => {
+            console.log('Status atualizado:', response.data);
             getUsers()
         })
         .catch((error) => {
@@ -26,7 +27,6 @@ export function Users({navigation}) {
     function getUsers() {
         axios.get(process.env.EXPO_PUBLIC_API_URL + '/users')
         .then((response) => {
-            console.log(response.data)
             setUsers(response.data)
         })
         .catch((error) => {
@@ -58,9 +58,9 @@ export function Users({navigation}) {
                         <Image source={imageSource} style={globalStyles.cardImage}/>
                         <Switch
                         trackColor={{ false: '#D3D3D3', true: '#2E8B57' }} 
-                        thumbColor={item.status ? '#f4f3f4' : '#f4f3f4'}
+                        thumbColor={item.status === 1 ? '#f4f3f4' : '#f4f3f4'}
                         ios_backgroundColor="#D3D3D3"    
-                        value={item.status}
+                        value={item.status === 1}
                         onValueChange={() => toggleSwitch(item.id)}
                         />
                     </View>
