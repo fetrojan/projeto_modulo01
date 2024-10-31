@@ -1,22 +1,25 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, FlatList, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import axios from "axios";
 import { globalStyles } from "../global/styles";
+import { useFocusEffect } from "@react-navigation/native";
 
 export function BranchMovements({navigation}) {
 
     const [movements, setMovements] = useState([])
     
-    useEffect(() => {
-        axios.get(process.env.EXPO_PUBLIC_API_URL + '/movements')
-        .then((response) => {
-            setMovements(response.data)
-        })
-        .catch((error) => {
-            Alert.alert('Não foi possível buscar as movimentações')
-            console.log(error)
-        })
-    }, [])
+    useFocusEffect(
+        React.useCallback(() => {
+            axios.get(process.env.EXPO_PUBLIC_API_URL + '/movements')
+            .then((response) => {
+                setMovements(response.data);
+            })
+            .catch((error) => {
+                Alert.alert('Não foi possível buscar as movimentações');
+                console.log(error);
+            });
+        }, [])
+    );
 
     function navigateToNewMovement() {
         navigation.navigate('NewMovement')
