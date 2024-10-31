@@ -57,7 +57,7 @@ export default function App() {
         <Stack.Screen name='Inventory' component={Inventory} options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Estoque de Produtos" />})}/> 
         <Stack.Screen name='Users' component={Users} options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Usuários Cadastrados" />})}/> 
         <Stack.Screen name='UserRegistration' component={UserRegistration} options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Cadastro de Usuário" />})}/> 
-        <Stack.Screen name='BranchMovement' component={BranchMovements} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
+        <Stack.Screen name='BranchMovements' component={BranchMovements} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
         <Stack.Screen name='CourierMovement' component={CourierMovement} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
         <Stack.Screen name='NewMovement' component={NewMovement} options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="" />})}/> 
         <Stack.Screen name='Map' component={Map}  options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Mapa de Trajeto" />})}/> 
