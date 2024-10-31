@@ -7,6 +7,7 @@ import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster'
 
 import Header from './src/components/Header';
 import BackHeader from './src/components/BackHeader';
+import SplashScreen from './src/components/SplashScreen'
 
 import { Login } from './src/pages/Login';
 import { Home } from './src/pages/Home';
@@ -26,6 +27,7 @@ export default function App() {
   });
 
   const [isLoading, setIsLoading] = useState(!fontsLoaded);
+  const [showSplash, setShowSplash] = useState(false)
 
   if (!fontsLoaded) {
     return (
@@ -35,21 +37,33 @@ export default function App() {
     );
   }
 
+  const handleLoginSuccess = () => {
+    setShowSplash(true); 
+  };
+
+  const hideSplashScreen = () => {
+    setShowSplash(false);
+  };
+
   return (
     <NavigationContainer>
+       {showSplash ? ( 
+        <SplashScreen onFinish={hideSplashScreen} />
+      ) : (
       <Stack.Navigator initialRouteName='Login'>
 
-        <Stack.Screen name='Login' component={Login} options={{header: () => <></>}}/>
+        <Stack.Screen name='Login' component={Login} options={{header: () => <></>}}  initialParams={{ onLoginSuccess: handleLoginSuccess }}/>
         <Stack.Screen name='Home' component={Home}  options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
-        <Stack.Screen name='Inventory' component={Inventory} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
-        <Stack.Screen name='Users' component={Users} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
-        <Stack.Screen name='UserRegistration' component={UserRegistration}/> 
+        <Stack.Screen name='Inventory' component={Inventory} options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Estoque de Produtos" />})}/> 
+        <Stack.Screen name='Users' component={Users} options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Usuários Cadastrados" />})}/> 
+        <Stack.Screen name='UserRegistration' component={UserRegistration} options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Cadastro de Usuário" />})}/> 
         <Stack.Screen name='BranchMovement' component={BranchMovements} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
         <Stack.Screen name='CourierMovement' component={CourierMovement} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
-        <Stack.Screen name='NewMovement' component={NewMovement}/> 
+        <Stack.Screen name='NewMovement' component={NewMovement} options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="" />})}/> 
         <Stack.Screen name='Map' component={Map}  options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Mapa de Trajeto" />})}/> 
 
       </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 }

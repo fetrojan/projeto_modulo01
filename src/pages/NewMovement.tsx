@@ -76,7 +76,7 @@ export function NewMovement({navigation}) {
             <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === "ios" ? "padding" : "height"}  keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}>
                 <ScrollView contentContainerStyle={{ flexGrow: 1}}>
                     <SafeAreaView style={globalStyles.safe}>
-                        <Text style={globalStyles.logoTitle}>Nova Movimentação</Text>
+                        <Text style={[globalStyles.logoTitle, {marginTop:15}]}>Nova Movimentação</Text>
                         <Text style={globalStyles.pickerLabel}>Filial Origem</Text>
                         <View style={globalStyles.pickerContainer}>
                             <Picker
