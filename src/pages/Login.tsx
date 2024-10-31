@@ -5,7 +5,9 @@ import { useEffect, useState } from "react"
 import { CommonActions } from "@react-navigation/native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
-export function Login({navigation}) {
+export function Login({navigation, route}) {
+
+    const { onLoginSuccess } = route.params
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -46,6 +48,8 @@ export function Login({navigation}) {
         .then((response) => {
             AsyncStorage.setItem("@name", response.data.name)
             AsyncStorage.setItem("@profile", response.data.profile)
+
+            onLoginSuccess(); 
 
             if(response.data.profile === 'admin') {
                 navigation.dispatch(
