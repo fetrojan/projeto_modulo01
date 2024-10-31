@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { useFonts, Lobster_400Regular } from '@expo-google-fonts/lobster'
 
 import Header from './src/components/Header';
+import BackHeader from './src/components/BackHeader';
 
 import { Login } from './src/pages/Login';
 import { Home } from './src/pages/Home';
@@ -15,6 +16,7 @@ import { UserRegistration } from './src/pages/UserRegistration';
 import { BranchMovements } from './src/pages/BranchMovements';
 import { CourierMovement } from './src/pages/CourierMovement';
 import { NewMovement } from './src/pages/NewMovement';
+import { Map } from './src/pages/Map';
 
 const Stack = createStackNavigator()
 
@@ -45,6 +47,7 @@ export default function App() {
         <Stack.Screen name='BranchMovement' component={BranchMovements} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
         <Stack.Screen name='CourierMovement' component={CourierMovement} options={({ navigation }) => ({header: () => <Header navigation={navigation} />})}/> 
         <Stack.Screen name='NewMovement' component={NewMovement}/> 
+        <Stack.Screen name='Map' component={Map}  options={({ navigation }) => ({header: () => <BackHeader navigation={navigation} title="Mapa de Trajeto" />})}/> 
 
       </Stack.Navigator>
     </NavigationContainer>
