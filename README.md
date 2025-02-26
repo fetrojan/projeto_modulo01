@@ -74,4 +74,4 @@ Emule no simulador de Android/iOS ou faça o scan do QR code gerado pelo Expo pa
 
 **Felipe R. Trojan**
 
-*Linkedin:* [Felipe R. Trojan](https://www.linkedin.com/in/felipe-trojan-software-engineer/)
+*Linkedin:* [Felipe R. Trojan](https://www.linkedin.com/in/felipe-trojan)
